@@ -2,11 +2,11 @@
   <div>
     <label>
       Min
-      <input type="number" :value="min" @input="updateMinHandler" class="cool" />
+      <input type="number" :value="min" :max="max" @input="updateMinHandler" class="cool" />
     </label>
     <label>
       Max
-      <input type="number" :value="max" @input="updateMaxHandler" class="cool" />
+      <input type="number" :value="max" :min="min" @input="updateMaxHandler" class="cool" />
     </label>
   </div>
 </template>
