@@ -1,12 +1,19 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from 'vue'
+import CoolSwitch from './components/CoolSwitch.vue'
+import CoolCheckbox from './components/CoolCheckbox.vue'
+import Shop from './components/shop/Shop.vue'
+
+const bool = ref(true)
+
+const toggle = (v) => bool.value = v
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+  <Shop />
+  {{ `${bool ? "" : "un"}checked` }}
+  <CoolSwitch :value="bool" @click="toggle" />
+  <CoolCheckbox :value="bool" @click="toggle" />
 </template>
 
 <style>

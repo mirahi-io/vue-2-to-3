@@ -1,0 +1,71 @@
+<template>
+  <div @click="on" class="cart">
+    <div v-if="amount" class="amount">{{ amount }}</div>Cart 🛒
+    <CoolModal :visible="visible">
+      <div class="modal">
+        <p>Do you want to empty the cart?</p>
+        <div class="buttons">
+          <CoolButton @click="confirm">Yes!</CoolButton>
+          <CoolButton @click="cancel">No!</CoolButton>
+        </div>
+      </div>
+    </CoolModal>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { inject } from 'vue'
+import CoolModal from '../CoolModal.vue';
+import CoolButton from '../CoolButton.vue'
+import { useBoolean } from '../../composables/useBoolean';
+import { CART_KEY, CART } from './constants';
+
+const { amount, set } = inject<CART>(CART_KEY)
+
+const { bool: visible, on, off } = useBoolean(false)
+
+const confirm = () => {
+  set(0)
+  off()
+}
+
+const cancel = () => {
+  off()
+}
+</script>
+
+<style scoped>
+.cart {
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 4px 8px;
+  height: 30px;
+  border-radius: 4px;
+  margin: 0px 8px;
+  position: relative;
+}
+
+.amount {
+  font-size: 10px;
+  color: white;
+  position: absolute;
+  right: 1px;
+  background-color: tomato;
+  border-radius: 50%;
+  min-width: 14px;
+  height: 14px;
+}
+
+.modal {
+  display: flex;
+  padding: 8px;
+  flex-direction: column;
+  align-content: space-between;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row-reverse;
+  align-content: space-around;
+}
+</style>
