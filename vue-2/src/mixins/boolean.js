@@ -21,16 +21,16 @@ export const boolMixin = {
     toggle() {
       this.bool = !this.bool;
     },
-    set(v: boolean) {
+    set(v) {
       this.bool = v;
     }
   },
   // update one when the other changes
   watch: {
-    value(newVal: boolean) {
+    value(newVal) {
       this.bool = newVal;
     },
-    bool(newVal: boolean) {
+    bool(newVal) {
       this.$emit("click", newVal);
     }
   }

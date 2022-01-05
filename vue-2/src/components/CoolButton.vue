@@ -6,12 +6,10 @@
 
 <script>
 export default {
-  name: "HelloWorld",
-  props: {
-    msg: String,
-  },
+  name: "CoolButton",
   methods: {
     clickHandler() {
+      console.log('clicked')
       this.$emit("click");
     },
   },

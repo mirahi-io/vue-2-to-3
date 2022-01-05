@@ -1,35 +1,52 @@
 <template>
-  <div id="app">
-    <CoolButton @click.right.native="congratulate" @click="greet" msg="Welcome to Your Vue.js App" />
+  <div class="container">
+    <ul class="routes">
+      <li>
+        <RouterLink to="/">Home</RouterLink>
+      </li>
+      <li>
+        <RouterLink to="/shop">Shop</RouterLink>
+      </li>
+    </ul>
+    <RouterView />
   </div>
 </template>
 
 <script>
-import CoolButton from './components/CoolButton.vue'
-
 export default {
   name: 'App',
-  components: {
-    CoolButton
-  },
-  methods: {
-    greet() {
-      console.log('Hello there!')
-    },
-    congratulate() {
-      console.log('Wow you clicked right on the button!')
-    }
-  }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.routes {
+  display: block;
+  position: fixed;
+  top: 60px;
+  left: 20px;
+  list-style: none;
 }
 </style>

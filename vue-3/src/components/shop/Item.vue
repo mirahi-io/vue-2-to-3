@@ -2,7 +2,7 @@
   <div>
     <span>A nice item!</span>
     <button @click="subtract">-</button>
-    <span>{{ innerAmount }}</span>
+    <span>{{ innerAmount }} 🍾</span>
     <button @click="add">+</button>
   </div>
 </template>

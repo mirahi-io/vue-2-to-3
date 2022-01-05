@@ -1,16 +1,32 @@
 <template>
-  <div class="cart">
+  <div @click.capture="show" class="cart">
     <div v-if="amount" class="amount">{{ amount }}</div>Cart 🛒
+    <CoolModal :visible="visible">
+      <div class="modal">
+        <p>Do you want to empty the cart?</p>
+        <div class="buttons">
+          <CoolButton @click="confirm">Yes!</CoolButton>
+          <CoolButton @click="cancel">No!</CoolButton>
+        </div>
+      </div>
+    </CoolModal>
   </div>
 </template>
 
 <script>
 import { eventBus } from "./eventBus";
+import CoolButton from '../CoolButton.vue'
+import CoolModal from '../CoolModal.vue'
 
 export default {
+  components: {
+    CoolButton,
+    CoolModal
+  },
   data() {
     return {
       amount: 0,
+      visible: false,
     };
   },
   created() {
@@ -21,6 +37,19 @@ export default {
   destroyed() {
     eventBus.$off("cart-update");
   },
+  methods: {
+    show() {
+      this.visible = true
+    },
+    confirm() {
+      this.visible = false
+      console.log('coucou')
+      eventBus.$emit('cart-update', 0)
+    },
+    cancel() {
+      this.visible = false
+    }
+  }
 };
 </script>
 
@@ -44,5 +73,7 @@ export default {
   border-radius: 50%;
   min-width: 14px;
   height: 14px;
+  display: grid;
+  place-content: center;
 }
 </style>

@@ -2,7 +2,7 @@
   <div>
     <span>A nice item!</span>
     <button @click="subtract">-</button>
-    <span>{{ amount }}</span>
+    <span>{{ amount }} 🍾</span>
     <button @click="add">+</button>
   </div>
 </template>
@@ -14,6 +14,14 @@ export default {
     return {
       amount: 0,
     };
+  },
+  created() {
+    eventBus.$on("cart-update", (newVal) => {
+      this.amount = newVal;
+    });
+  },
+  destroyed() {
+    eventBus.$off("cart-update");
   },
   methods: {
     add() {

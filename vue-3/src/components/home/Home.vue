@@ -12,8 +12,8 @@ const toggle = (v) => bool.value = v
 </script>
 
 <template>
-  <h1>Inputs</h1>
   <div class="home">
+    <h1>Inputs</h1>
     <div class="checkboxes">
       <CoolSwitch :value="bool" @click="toggle" />
       <CoolCheckbox :value="bool" @click="toggle" />

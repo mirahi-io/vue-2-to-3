@@ -15,6 +15,3 @@ const set = (v: number) => amount.value = v
 
 provide<CART>(CART_KEY, { amount, set })
 </script>
-
-<style>
-</style>
