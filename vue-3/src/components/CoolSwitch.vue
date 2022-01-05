@@ -1,18 +1,21 @@
 <template>
   <div class="toggle">
     <input :checked="bool" @click="toggle" type="checkbox" id="temp" />
-    <label for="temp">Toggle Switch</label>
+    <label for="temp">{{ label }}</label>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, toRefs, watch } from 'vue'
+import { defineProps, defineEmits, toRefs } from 'vue'
 import { useBoolean } from '../composables/useBoolean';
 import { useSync } from '../composables/useSync';
 
-const props = defineProps<{
-  value: boolean
-}>()
+const props = withDefaults(defineProps<{
+  value: boolean,
+  label?: string,
+}>(), {
+  label: 'Switch'
+})
 
 const { value } = toRefs(props)
 
@@ -33,18 +36,7 @@ $toggle-bg-color: lightblue;
 $toggle-nub-color: lightgreen;
 $font-color: black;
 
-body {
-  display: flex;
-  height: 100vh;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: $bg-color;
-  font-family: Montserrat;
-}
-
 .toggle {
-  margin-top: 40px;
   input[type="checkbox"] {
     display: none;
   }

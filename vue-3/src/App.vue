@@ -1,32 +1,39 @@
 <script setup>
-import { ref } from 'vue'
-import CoolSwitch from './components/CoolSwitch.vue'
-import CoolCheckbox from './components/CoolCheckbox.vue'
-import Shop from './components/shop/Shop.vue'
-import CoolRange from './components/CoolRange.vue'
-
-const bool = ref(true)
-const min = ref(0)
-const max = ref(10)
-
-const toggle = (v) => bool.value = v
+import { RouterView, RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <Shop />
-  {{ `${bool ? "" : "un"}checked` }}
-  <CoolSwitch :value="bool" @click="toggle" />
-  <CoolCheckbox :value="bool" @click="toggle" />
-  <CoolRange v-model:min="min" v-model:max="max" />
+  <ul class="routes">
+    <li>
+      <RouterLink to="/">Home</RouterLink>
+    </li>
+    <li>
+      <RouterLink to="/shop">Shop</RouterLink>
+    </li>
+  </ul>
+  <RouterView />
 </template>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.routes {
+  display: block;
+  position: fixed;
+  top: 60px;
+  left: 20px;
+  list-style: none;
 }
 </style>

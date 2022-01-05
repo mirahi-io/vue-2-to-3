@@ -1,14 +1,20 @@
 <template>
-  <input :checked="bool" @click="toggle" type="checkbox" />
+  <div class="container">
+    <input :checked="bool" @click="toggle" type="checkbox" id="cc" />
+    <label for="cc">{{ label }}</label>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, toRefs, watch } from 'vue'
+import { defineProps, defineEmits, toRefs, watch, withDefaults } from 'vue'
 import { useBoolean } from '../composables/useBoolean';
 
-const props = defineProps<{
-  value: boolean
-}>()
+const props = withDefaults(defineProps<{
+  value: boolean,
+  label?: string,
+}>(), {
+  label: 'Checkbox'
+})
 
 const { value } = toRefs(props)
 
@@ -28,64 +34,38 @@ watch(bool, (newVal) => {
 </script>
 
 <style lang="scss" scoped>
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
-
-$bg-color: #ffffff;
-$toggle-bg-color: lightblue;
-$toggle-nub-color: lightgreen;
-$font-color: black;
-
-body {
-  display: flex;
-  height: 100vh;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: $bg-color;
-  font-family: Montserrat;
+.container {
+  line-height: 1.1;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
 }
 
-.toggle {
-  margin-top: 40px;
-  input[type="checkbox"] {
-    display: none;
-  }
+input[type="checkbox"] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+}
 
-  label {
-    color: $font-color;
-    position: relative;
-  }
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em lightcoral;
+}
 
-  input[type="checkbox"] + label::before {
-    content: " ";
-    display: block;
-    height: 18px;
-    width: 45px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 9px;
-    position: absolute;
-    top: 0px;
-    left: -65px;
-    background: $toggle-bg-color;
-  }
-
-  input[type="checkbox"] + label::after {
-    content: " ";
-    display: block;
-    height: 30px;
-    width: 30px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 50%;
-    position: absolute;
-    top: -6px;
-    left: -75px;
-    background: $toggle-nub-color;
-    transition: all 0.3s ease-in;
-  }
-
-  input[type="checkbox"]:checked + label::after {
-    left: -40px;
-    transition: all 0.3s ease-in;
-  }
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
 }
 </style>

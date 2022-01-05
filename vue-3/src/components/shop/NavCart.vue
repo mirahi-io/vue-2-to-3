@@ -54,18 +54,20 @@ const cancel = () => {
   border-radius: 50%;
   min-width: 14px;
   height: 14px;
+  display: grid;
+  place-content: center;
 }
 
 .modal {
   display: flex;
-  padding: 8px;
+  padding: 16px;
   flex-direction: column;
   align-content: space-between;
 }
 
 .buttons {
+  margin-top: 16px;
   display: flex;
   flex-direction: row-reverse;
-  align-content: space-around;
 }
 </style>

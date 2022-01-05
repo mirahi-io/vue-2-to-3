@@ -1,24 +1,12 @@
 <template>
   <div>
     <label>
-      Min: {{ min }}
-      <input
-        type="number"
-        :value="min"
-        :max="max"
-        @input="updateMinHandler"
-        class="cool"
-      />
+      Min:
+      <input type="number" :value="min" :max="max" @input="updateMinHandler" class="cool" />
     </label>
     <label>
-      Max: {{ max }}
-      <input
-        type="number"
-        :value="max"
-        :min="min"
-        @input="updateMaxHandler"
-        class="cool"
-      />
+      Max:
+      <input type="number" :value="max" :min="min" @input="updateMaxHandler" class="cool" />
     </label>
   </div>
 </template>
@@ -44,17 +32,19 @@ const emit = defineEmits<{
 }>()
 
 const updateMinHandler = (e: Event) => {
-  emit('update:min', e.target.value)
+  const n = Number((e.currentTarget as HTMLInputElement).value)
+  emit('update:min', n)
 }
 const updateMaxHandler = (e: Event) => {
-  emit('update:max', e.target.value)
+  const n = Number((e.currentTarget as HTMLInputElement).value)
+  emit('update:max', n)
 }
 </script>
 
 <style scoped>
 .cool {
   border-radius: 4px;
-  background-color: lightblue;
+  background-color: lightcyan;
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 4px 8px;
   width: 3em;
