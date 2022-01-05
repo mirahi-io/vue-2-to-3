@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, toRefs } from 'vue'
+import { toRefs } from 'vue'
 import { useBoolean } from '../composables/useBoolean';
 import { useSync } from '../composables/useSync';
 

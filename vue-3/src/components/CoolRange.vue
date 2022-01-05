@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, withDefaults, toRefs } from 'vue'
+import { withDefaults, toRefs } from 'vue'
 
 type Props = {
   min?: number;

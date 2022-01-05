@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, toRefs, watch, withDefaults } from 'vue'
+import { toRefs, watch, withDefaults } from 'vue'
 import { useBoolean } from '../composables/useBoolean';
 
 const props = withDefaults(defineProps<{
