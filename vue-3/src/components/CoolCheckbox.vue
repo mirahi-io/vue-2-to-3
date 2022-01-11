@@ -9,11 +9,13 @@
 import { toRefs, watch, withDefaults } from 'vue'
 import { useBoolean } from '../composables/useBoolean';
 
-const props = withDefaults(defineProps<{
-  value: boolean,
-  label?: string,
-}>(), {
-  label: 'Checkbox'
+interface Props {
+  value: boolean
+  label?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  label: 'hello'
 })
 
 const { value } = toRefs(props)
@@ -24,10 +26,12 @@ const emit = defineEmits<{
   (e: 'click', payload: boolean): void
 }>()
 
+// when prop changes, update internal state
 watch(value, (newVal) => {
   set(newVal)
 })
 
+// when internal state changes, tell parent to update its internal state
 watch(bool, (newVal) => {
   emit('click', newVal)
 })

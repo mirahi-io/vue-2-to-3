@@ -3,12 +3,12 @@ import { ref } from 'vue'
 import CoolSwitch from '../CoolSwitch.vue'
 import CoolCheckbox from '../CoolCheckbox.vue'
 import CoolRange from '../CoolRange.vue'
+import { useBoolean } from '../../composables/useBoolean'
 
-const bool = ref(true)
+const { bool, toggle } = useBoolean(true)
+
 const min = ref(0)
 const max = ref(10)
-
-const toggle = (v) => bool.value = v
 </script>
 
 <template>
