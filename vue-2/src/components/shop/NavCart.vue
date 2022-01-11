@@ -43,7 +43,6 @@ export default {
     },
     confirm() {
       this.visible = false
-      console.log('coucou')
       eventBus.$emit('cart-update', 0)
     },
     cancel() {
