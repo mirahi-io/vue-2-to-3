@@ -10,6 +10,11 @@
 </template>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .content {
   margin-top: 200px;
 }
