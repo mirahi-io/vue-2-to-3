@@ -12,6 +12,18 @@ const items = [
     maxAmount: 13,
     price: 1.4,
     logo: '🍏'
+  },
+  {
+    name: 'bananas',
+    maxAmount: 10,
+    price: 1.9,
+    logo: '🍌'
+  },
+  {
+    name: 'watermelons',
+    maxAmount: 5,
+    price: 4.1,
+    logo: '🍉'
   }
 ]
 
