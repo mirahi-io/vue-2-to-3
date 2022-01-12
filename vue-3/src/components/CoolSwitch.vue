@@ -6,9 +6,8 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs } from 'vue'
+import { toRefs, watch } from 'vue'
 import { useBoolean } from '../composables/useBoolean';
-import { useSync } from '../composables/useSync';
 
 const props = withDefaults(defineProps<{
   value: boolean,
@@ -25,7 +24,15 @@ const emit = defineEmits<{
   (e: 'click', payload: boolean): void
 }>()
 
-useSync([value, bool], [set, (val: boolean) => emit('click', val)])
+// when prop changes, update internal state
+watch(value, (newVal) => {
+  set(newVal)
+})
+
+// when internal state changes, tell parent to update its internal state
+watch(bool, (newVal) => {
+  emit('click', newVal)
+})
 </script>
 
 <style lang="scss" scoped>

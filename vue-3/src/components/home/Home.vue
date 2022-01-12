@@ -5,7 +5,7 @@ import CoolCheckbox from '../CoolCheckbox.vue'
 import CoolRange from '../CoolRange.vue'
 import { useBoolean } from '../../composables/useBoolean'
 
-const { bool, toggle } = useBoolean(true)
+const { bool, set } = useBoolean(true)
 
 const min = ref(0)
 const max = ref(10)
@@ -15,8 +15,8 @@ const max = ref(10)
   <div class="home">
     <h1>Inputs</h1>
     <div class="checkboxes">
-      <CoolSwitch :value="bool" @click="toggle" />
-      <CoolCheckbox :value="bool" @click="toggle" />
+      <CoolSwitch :value="bool" @click="set" />
+      <CoolCheckbox :value="bool" @click="set" />
     </div>
     <div>
       <CoolRange v-model:min="min" v-model:max="max" />

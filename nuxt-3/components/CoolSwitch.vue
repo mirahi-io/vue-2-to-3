@@ -1,6 +1,6 @@
 <template>
   <div class="toggle">
-    <input :checked="bool" @click.capture="toggle" type="checkbox" id="temp" />
+    <input :checked="bool" @click="toggle" type="checkbox" id="temp" />
     <label for="temp">{{ label }}</label>
   </div>
 </template>
@@ -22,7 +22,15 @@ const emit = defineEmits<{
   (e: 'click', payload: boolean): void
 }>()
 
-useSync([value, bool], [set, (val: boolean) => emit('click', val)])
+// when prop changes, update internal state
+watch(value, (newVal) => {
+  set(newVal)
+})
+
+// when internal state changes, tell parent to update its internal state
+watch(bool, (newVal) => {
+  emit('click', newVal)
+})
 </script>
 
 <style lang="scss" scoped>

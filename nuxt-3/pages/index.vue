@@ -1,5 +1,5 @@
 <script setup>
-const { bool, toggle } = useBoolean(true)
+const { bool, set } = useBoolean(true)
 
 watch(bool, (newBool) => console.log('bool', newBool))
 
@@ -11,8 +11,8 @@ const max = ref(10)
   <div class="home">
     <h1>Inputs</h1>
     <div class="checkboxes">
-      <CoolSwitch :value="bool" @click.capture="toggle" />
-      <CoolCheckbox :value="bool" @click.capture="toggle" />
+      <CoolSwitch :value="bool" @click="set" />
+      <CoolCheckbox :value="bool" @click="set" />
     </div>
     <div>
       <CoolRange v-model:min="min" v-model:max="max" />
