@@ -8,7 +8,6 @@
 </template>
 
 <script setup lang="ts">
-
 type Props = {
   name: string
   logo: string

@@ -12,7 +12,6 @@ const emit = defineEmits<{
 const clickHandler = () => {
   emit('click')
 }
-
 </script>
 
 <style scoped>

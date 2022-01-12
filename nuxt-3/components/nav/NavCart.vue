@@ -17,9 +17,6 @@
 </template>
 
 <script setup lang="ts">
-import CoolModal from '../CoolModal.vue';
-import CoolButton from '../CoolButton.vue'
-
 const { $vat } = useNuxtApp()
 const { totalAmount, totalPrice, reset } = useCart()
 
