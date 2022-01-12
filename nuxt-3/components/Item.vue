@@ -1,26 +1,36 @@
 <template>
   <div>
-    <span>A nice item!</span>
+    <span>Juicy {{ name }}</span>
     <button @click="subtract">-</button>
-    <span>{{ amount }} 🍾</span>
+    <span>{{ amount }} {{ logo }}</span>
     <button @click="add">+</button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { inject } from 'vue'
-import { CART, CART_KEY } from './constants'
 
-const { amount, set } = inject<CART>(CART_KEY)
+type Props = {
+  name: string
+  logo: string
+  amount: number
+}
+
+const props = defineProps<Props>()
+
+const { logo, name, amount } = toRefs(props)
+
+const emit = defineEmits<{
+  (e: 'add'): void
+  (e: 'subtract'): void
+}>()
 
 const add = () => {
-  set(amount.value + 1)
+  emit('add')
 }
 
 const subtract = () => {
-  set(Math.max(amount.value - 1, 0))
+  emit('subtract')
 }
-
 </script>
 
 <style scoped>
