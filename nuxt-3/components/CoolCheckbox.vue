@@ -6,8 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs, watch, withDefaults } from 'vue'
-
 interface Props {
   value: boolean
   label?: string

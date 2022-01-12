@@ -1,7 +1,4 @@
 <script setup>
-import CoolSwitch from '~~/components/components/CoolSwitch.vue';
-import CoolCheckbox from '~~/components/components/CoolCheckbox.vue';
-import CoolRange from '~~/components/components/CoolRange.vue';
 const { bool, toggle } = useBoolean(true)
 
 watch(bool, (newBool) => console.log('bool', newBool))

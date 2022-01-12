@@ -12,7 +12,6 @@
 </template>
 
 <script setup lang="ts">
-import { withDefaults, toRefs } from 'vue'
 
 type Props = {
   min?: number;
