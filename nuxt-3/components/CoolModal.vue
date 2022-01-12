@@ -34,5 +34,6 @@ const { visible } = toRefs(props)
   background-color: white;
   border-radius: 4px;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 20;
 }
 </style>
