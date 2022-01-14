@@ -24,8 +24,8 @@ watch(user, (newUser) => {
 })
 </script>
 
-<style>
-* {
+<style scoped>
+:global(*) {
   margin: 0;
   padding: 0;
 }
