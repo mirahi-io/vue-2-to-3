@@ -12,12 +12,14 @@
         @input="updateForm('password', $event)"
       />
     </label>
-    <CoolButton @click="logUserIn">Log in</CoolButton>
+    <CoolButton :disabled="loading" @click="logUserIn">Log in</CoolButton>
+    {{ loading ? 'loading...' : '' }}
   </div>
 </template>
 
 <script setup lang="ts">
 const { push } = useRouter()
+const { login, user, loading } = useAuth()
 
 const form = reactive({
   name: '',
@@ -29,10 +31,8 @@ const updateForm = (name: string, e: Event) => {
   form[name] = val
 }
 
-const { login, user } = useAuth()
-
-const logUserIn = () => {
-  login(form.name, form.password)
+const logUserIn = async () => {
+  await login(form.name, form.password)
 
   form.name = '';
   form.password = '';

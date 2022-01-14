@@ -14,18 +14,27 @@ const users: User[] = [
   }
 ]
 
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 export default () => {
   const user = useCookie<User>('user')
+  const loading = ref(false)
 
-  const login = (name: string, pwd: string) => {
+  const login = async (name: string, pwd: string) => {
     const userFound = users.find(user => user.name === name)
+    loading.value = true
 
+    await sleep(1000)
+
+    loading.value = false
     if (!userFound) return
     if (userFound.password !== pwd) return
 
     user.value = {
       name
     }
+
+    return Promise.resolve()
   }
 
   const logout = () => {
@@ -38,5 +47,6 @@ export default () => {
     user,
     login,
     logout,
+    loading
   }
 }
