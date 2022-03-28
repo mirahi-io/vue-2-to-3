@@ -14,13 +14,12 @@
 </template>
 
 <script setup lang="ts">
-import { inject } from 'vue'
 import CoolModal from '../CoolModal.vue';
 import CoolButton from '../CoolButton.vue'
 import { useBoolean } from '../../composables/useBoolean';
-import { CART_KEY, CART } from './constants';
+import { useItemStore } from '../../composables/useItemStore';
 
-const { amount, set } = inject<CART>(CART_KEY)
+const { amount, set } = useItemStore()
 
 const { bool: visible, on, off } = useBoolean(false)
 

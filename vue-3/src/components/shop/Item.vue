@@ -8,10 +8,9 @@
 </template>
 
 <script setup lang="ts">
-import { inject } from 'vue'
-import { CART, CART_KEY } from './constants'
+import { useItemStore } from '../../composables/useItemStore';
 
-const { amount, set } = inject<CART>(CART_KEY)
+const { amount, set } = useItemStore()
 
 const add = () => {
   set(amount.value + 1)
