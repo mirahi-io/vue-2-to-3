@@ -2,23 +2,22 @@
   <div>
     <span>A nice item!</span>
     <button @click="subtract">-</button>
-    <span>{{ amount }} 🍾</span>
+    <span>{{ store.item }} 🍾</span>
     <button @click="add">+</button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { inject } from 'vue'
-import { CART, CART_KEY } from './constants'
+import { useItemStore } from '../../composables/useItemStore'
 
-const { amount, set } = inject<CART>(CART_KEY)
+const store = useItemStore()
 
 const add = () => {
-  set(amount.value + 1)
+  store.increment()
 }
 
 const subtract = () => {
-  set(Math.max(amount.value - 1, 0))
+  store.decrement()
 }
 
 </script>
