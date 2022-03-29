@@ -18,6 +18,7 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 export default () => {
   const user = useCookie<User>('user')
+  const { push } = useRouter()
   const loading = ref(false)
 
   const login = async (name: string, pwd: string) => {
@@ -41,6 +42,8 @@ export default () => {
     user.value = {
       name: ''
     }
+
+    return push('/')
   }
 
   return {

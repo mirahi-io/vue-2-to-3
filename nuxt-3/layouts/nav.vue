@@ -2,7 +2,7 @@
   <div>
     <NavBar>
       <slot name="nav" />
-      <div class="user" v-if="user.name" @click="logout">{{ user.name }} 🏃🏻</div>
+      <div class="user" v-if="user?.name" @click="logout">{{ user.name }} 🏃🏻</div>
     </NavBar>
     <div class="content">
       <slot />
@@ -12,16 +12,6 @@
 
 <script setup lang="ts">
 const { user, logout } = useAuth()
-const { push } = useRouter()
-
-// redirect to login page when no user is logged in
-watch(user, (newUser) => {
-  if (!newUser.name) {
-    push('/auth')
-  }
-}, {
-  immediate: true
-})
 </script>
 
 <style scoped>

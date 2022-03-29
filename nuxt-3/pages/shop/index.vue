@@ -16,13 +16,12 @@
   </NuxtLayout>
 </template>
 
-<script lang="ts">
-export default {
-  layout: false
-}
-</script>
-
 <script setup lang="ts">
+definePageMeta({
+  middleware: ['auth'],
+  layout: false
+})
+
 const { data: fruits } = await useFetch('/api/items')
 
 const { state, addItem, subtractItem } = useCart(fruits.value)

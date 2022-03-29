@@ -39,7 +39,7 @@ const logUserIn = async () => {
 }
 
 watch(user, (newUser) => {
-  if (newUser.name) {
+  if (newUser?.name) {
     push('/shop')
   }
 })
@@ -47,7 +47,7 @@ watch(user, (newUser) => {
 
 <style>
 .centered {
-  margin-top: 300px;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
