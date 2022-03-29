@@ -1,8 +1,6 @@
 <script setup>
 const { bool, set } = useBoolean(true)
 
-watch(bool, (newBool) => console.log('bool', newBool))
-
 const min = ref(0)
 const max = ref(10)
 </script>

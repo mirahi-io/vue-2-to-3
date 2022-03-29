@@ -23,15 +23,8 @@ const emit = defineEmits<{
   (e: 'click', payload: boolean): void
 }>()
 
-// when prop changes, update internal state
-watch(value, (newVal) => {
-  set(newVal)
-})
-
-// when internal state changes, tell parent to update its internal state
-watch(bool, (newVal) => {
-  emit('click', newVal)
-})
+const { $curry } = useNuxtApp()
+useSync([value, bool], [set, $curry(emit, 2)('click')])
 </script>
 
 <style lang="scss" scoped>

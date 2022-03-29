@@ -1,4 +1,4 @@
-const round = (n, decimals = 2) =>
+const round = (n: number, decimals = 2) =>
   Number(`${Math.round(Number(`${n}e${decimals}`))}e-${decimals}`);
 
 
